@@ -1,0 +1,1851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище UP41Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="Article" />
+          </Key>
+          <Property Name="Article" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdUnit" Type="int" />
+          <Property Name="Count" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdAcessoriesImage" Type="int" />
+          <Property Name="IdTypeAccessories" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Weight" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="IdStorage" Type="int" />
+        </EntityType>
+        <EntityType Name="AcessoriesImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Format" Type="nvarchar" MaxLength="10" />
+          <Property Name="IdOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdTypeEquipment" Type="int" />
+          <Property Name="Characteristic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Article" />
+          </Key>
+          <Property Name="Article" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdUnit" Type="int" />
+          <Property Name="Count" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMaterialImage" Type="int" />
+          <Property Name="IdTypeMaterial" Type="int" />
+          <Property Name="PriceOneKg" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IdStandart" Type="int" />
+          <Property Name="WidthMetr" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MassOneMetr" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="IdStorage" Type="int" />
+        </EntityType>
+        <EntityType Name="MaterialImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="OperationSpecification">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="Operation" />
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="IdTypeEquipment" Type="int" />
+          <Property Name="Duration" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DateOrder" Type="date" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="LoginCustomer" Type="nvarchar" MaxLength="100" />
+          <Property Name="LoginManager" Type="nvarchar" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DateEnd" Type="date" />
+        </EntityType>
+        <EntityType Name="PerformTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductAccessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="AccessoriesArticle" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Count" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="IdDetail" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdDetail" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="MaterialArticle" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Count" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SizeValue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IdUnit" Type="int" />
+          <Property Name="IdProduct" Type="int" />
+        </EntityType>
+        <EntityType Name="Standart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_City" Type="int" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierName" />
+          </Key>
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="DeliveryTime" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeAccessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeEquipment">
+          <Key>
+            <PropertyRef Name="IdTypeEquipment" />
+          </Key>
+          <Property Name="IdTypeEquipment" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdUserImage" Type="int" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Id_Street" Type="int" />
+          <Property Name="House" Type="nvarchar" MaxLength="10" />
+          <Property Name="Flat" Type="nvarchar" MaxLength="10" />
+          <Property Name="Qualification" Type="nvarchar(max)" />
+          <Property Name="Education" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User_tasks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="id_perform_task" Type="int" />
+        </EntityType>
+        <EntityType Name="UserImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Accessories_AcessoriesImage">
+          <End Role="AcessoriesImage" Type="Self.AcessoriesImage" Multiplicity="0..1" />
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcessoriesImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdAcessoriesImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Sklad">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Supplier1">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierName" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="SupplierName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_TypeAccessories">
+          <End Role="TypeAccessories" Type="Self.TypeAccessories" Multiplicity="0..1" />
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAccessories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdTypeAccessories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_TypeEquipment">
+          <End Role="TypeEquipment" Type="Self.TypeEquipment" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEquipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_MaterialImage">
+          <End Role="MaterialImage" Type="Self.MaterialImage" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdMaterialImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Sklad">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Standart">
+          <End Role="Standart" Type="Self.Standart" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Standart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdStandart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierName" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="SupplierName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_TypeMaterial">
+          <End Role="TypeMaterial" Type="Self.TypeMaterial" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdTypeMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationSpecification_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OperationSpecification" Type="Self.OperationSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OperationSpecification">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationSpecification_TypeEquipment">
+          <End Role="TypeEquipment" Type="Self.TypeEquipment" Multiplicity="0..1" />
+          <End Role="OperationSpecification" Type="Self.OperationSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEquipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Principal>
+            <Dependent Role="OperationSpecification">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAccessories_Accessories">
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductAccessories" Type="Self.ProductAccessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="Article" />
+            </Principal>
+            <Dependent Role="ProductAccessories">
+              <PropertyRef Name="AccessoriesArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAccessories_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductAccessories" Type="Self.ProductAccessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAccessories">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="IdDetail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterial_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductMaterial" Type="Self.ProductMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Article" />
+            </Principal>
+            <Dependent Role="ProductMaterial">
+              <PropertyRef Name="MaterialArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterial_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductMaterial" Type="Self.ProductMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMaterial">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Size_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Size" Type="Self.Size" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Size">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Size_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Size" Type="Self.Size" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Size">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Street_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="Id_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_tasks_PerformTasks">
+          <End Role="PerformTasks" Type="Self.PerformTasks" Multiplicity="0..1" />
+          <End Role="User_tasks" Type="Self.User_tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerformTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_tasks">
+              <PropertyRef Name="id_perform_task" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_tasks_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User_tasks" Type="Self.User_tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="User_tasks">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UP41ModelContainer">
+          <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcessoriesImage" EntityType="Self.AcessoriesImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialImage" EntityType="Self.MaterialImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationSpecification" EntityType="Self.OperationSpecification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerformTasks" EntityType="Self.PerformTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductAccessories" EntityType="Self.ProductAccessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Standart" EntityType="Self.Standart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeAccessories" EntityType="Self.TypeAccessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeEquipment" EntityType="Self.TypeEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeMaterial" EntityType="Self.TypeMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_tasks" EntityType="Self.User_tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserImage" EntityType="Self.UserImage" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accessories_AcessoriesImage" Association="Self.FK_Accessories_AcessoriesImage">
+            <End Role="AcessoriesImage" EntitySet="AcessoriesImage" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Sklad" Association="Self.FK_Accessories_Sklad">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Supplier1" Association="Self.FK_Accessories_Supplier1">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_TypeAccessories" Association="Self.FK_Accessories_TypeAccessories">
+            <End Role="TypeAccessories" EntitySet="TypeAccessories" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Unit" Association="Self.FK_Accessories_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Order" Association="Self.FK_Document_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_TypeEquipment" Association="Self.FK_Equipment_TypeEquipment">
+            <End Role="TypeEquipment" EntitySet="TypeEquipment" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_MaterialImage" Association="Self.FK_Material_MaterialImage">
+            <End Role="MaterialImage" EntitySet="MaterialImage" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Sklad" Association="Self.FK_Material_Sklad">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Standart" Association="Self.FK_Material_Standart">
+            <End Role="Standart" EntitySet="Standart" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Supplier" Association="Self.FK_Material_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_TypeMaterial" Association="Self.FK_Material_TypeMaterial">
+            <End Role="TypeMaterial" EntitySet="TypeMaterial" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Unit" Association="Self.FK_Material_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationSpecification_Product" Association="Self.FK_OperationSpecification_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OperationSpecification" EntitySet="OperationSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationSpecification_TypeEquipment" Association="Self.FK_OperationSpecification_TypeEquipment">
+            <End Role="TypeEquipment" EntitySet="TypeEquipment" />
+            <End Role="OperationSpecification" EntitySet="OperationSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAccessories_Accessories" Association="Self.FK_ProductAccessories_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="ProductAccessories" EntitySet="ProductAccessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAccessories_Product" Association="Self.FK_ProductAccessories_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductAccessories" EntitySet="ProductAccessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="Self.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product1" Association="Self.FK_ProductDetail_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterial_Material" Association="Self.FK_ProductMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterial_Product" Association="Self.FK_ProductMaterial_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Size_Product" Association="Self.FK_Size_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Size" EntitySet="Size" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Size_Unit" Association="Self.FK_Size_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Size" EntitySet="Size" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Street_City" Association="Self.FK_Street_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_tasks_PerformTasks" Association="Self.FK_User_tasks_PerformTasks">
+            <End Role="PerformTasks" EntitySet="PerformTasks" />
+            <End Role="User_tasks" EntitySet="User_tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_tasks_User" Association="Self.FK_User_tasks_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_tasks" EntitySet="User_tasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UP41Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UP41Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessories" EntityType="UP41Model.Accessories" />
+          <EntitySet Name="AcessoriesImage" EntityType="UP41Model.AcessoriesImage" />
+          <EntitySet Name="City" EntityType="UP41Model.City" />
+          <EntitySet Name="Document" EntityType="UP41Model.Document" />
+          <EntitySet Name="Equipment" EntityType="UP41Model.Equipment" />
+          <EntitySet Name="Material" EntityType="UP41Model.Material" />
+          <EntitySet Name="MaterialImage" EntityType="UP41Model.MaterialImage" />
+          <EntitySet Name="OperationSpecification" EntityType="UP41Model.OperationSpecification" />
+          <EntitySet Name="Order" EntityType="UP41Model.Order" />
+          <EntitySet Name="PerformTasks" EntityType="UP41Model.PerformTasks" />
+          <EntitySet Name="Product" EntityType="UP41Model.Product" />
+          <EntitySet Name="ProductAccessories" EntityType="UP41Model.ProductAccessories" />
+          <EntitySet Name="ProductDetail" EntityType="UP41Model.ProductDetail" />
+          <EntitySet Name="ProductMaterial" EntityType="UP41Model.ProductMaterial" />
+          <EntitySet Name="Role" EntityType="UP41Model.Role" />
+          <EntitySet Name="Size" EntityType="UP41Model.Size" />
+          <EntitySet Name="Standart" EntityType="UP41Model.Standart" />
+          <EntitySet Name="Storage" EntityType="UP41Model.Storage" />
+          <EntitySet Name="Street" EntityType="UP41Model.Street" />
+          <EntitySet Name="Supplier" EntityType="UP41Model.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="UP41Model.sysdiagrams" />
+          <EntitySet Name="TypeAccessories" EntityType="UP41Model.TypeAccessories" />
+          <EntitySet Name="TypeEquipment" EntityType="UP41Model.TypeEquipment" />
+          <EntitySet Name="TypeMaterial" EntityType="UP41Model.TypeMaterial" />
+          <EntitySet Name="Unit" EntityType="UP41Model.Unit" />
+          <EntitySet Name="User" EntityType="UP41Model.User" />
+          <EntitySet Name="User_tasks" EntityType="UP41Model.User_tasks" />
+          <EntitySet Name="UserImage" EntityType="UP41Model.UserImage" />
+          <AssociationSet Name="FK_Accessories_AcessoriesImage" Association="UP41Model.FK_Accessories_AcessoriesImage">
+            <End Role="AcessoriesImage" EntitySet="AcessoriesImage" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Sklad" Association="UP41Model.FK_Accessories_Sklad">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Supplier1" Association="UP41Model.FK_Accessories_Supplier1">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_TypeAccessories" Association="UP41Model.FK_Accessories_TypeAccessories">
+            <End Role="TypeAccessories" EntitySet="TypeAccessories" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessories_Unit" Association="UP41Model.FK_Accessories_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Accessories" EntitySet="Accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAccessories_Accessories" Association="UP41Model.FK_ProductAccessories_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="ProductAccessories" EntitySet="ProductAccessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Street_City" Association="UP41Model.FK_Street_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Order" Association="UP41Model.FK_Document_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_TypeEquipment" Association="UP41Model.FK_Equipment_TypeEquipment">
+            <End Role="TypeEquipment" EntitySet="TypeEquipment" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_MaterialImage" Association="UP41Model.FK_Material_MaterialImage">
+            <End Role="MaterialImage" EntitySet="MaterialImage" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Sklad" Association="UP41Model.FK_Material_Sklad">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Standart" Association="UP41Model.FK_Material_Standart">
+            <End Role="Standart" EntitySet="Standart" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Supplier" Association="UP41Model.FK_Material_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_TypeMaterial" Association="UP41Model.FK_Material_TypeMaterial">
+            <End Role="TypeMaterial" EntitySet="TypeMaterial" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Unit" Association="UP41Model.FK_Material_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterial_Material" Association="UP41Model.FK_ProductMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationSpecification_Product" Association="UP41Model.FK_OperationSpecification_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OperationSpecification" EntitySet="OperationSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationSpecification_TypeEquipment" Association="UP41Model.FK_OperationSpecification_TypeEquipment">
+            <End Role="TypeEquipment" EntitySet="TypeEquipment" />
+            <End Role="OperationSpecification" EntitySet="OperationSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="UP41Model.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_tasks_PerformTasks" Association="UP41Model.FK_User_tasks_PerformTasks">
+            <End Role="PerformTasks" EntitySet="PerformTasks" />
+            <End Role="User_tasks" EntitySet="User_tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAccessories_Product" Association="UP41Model.FK_ProductAccessories_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductAccessories" EntitySet="ProductAccessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="UP41Model.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product1" Association="UP41Model.FK_ProductDetail_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterial_Product" Association="UP41Model.FK_ProductMaterial_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Size_Product" Association="UP41Model.FK_Size_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Size" EntitySet="Size" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="UP41Model.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Size_Unit" Association="UP41Model.FK_Size_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Size" EntitySet="Size" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_tasks_User" Association="UP41Model.FK_User_tasks_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_tasks" EntitySet="User_tasks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="Article" />
+          </Key>
+          <Property Name="Article" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdUnit" Type="Int32" />
+          <Property Name="Count" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAcessoriesImage" Type="Int32" />
+          <Property Name="IdTypeAccessories" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="IdStorage" Type="Int32" />
+          <NavigationProperty Name="AcessoriesImage" Relationship="UP41Model.FK_Accessories_AcessoriesImage" FromRole="Accessories" ToRole="AcessoriesImage" />
+          <NavigationProperty Name="Storage" Relationship="UP41Model.FK_Accessories_Sklad" FromRole="Accessories" ToRole="Storage" />
+          <NavigationProperty Name="Supplier" Relationship="UP41Model.FK_Accessories_Supplier1" FromRole="Accessories" ToRole="Supplier" />
+          <NavigationProperty Name="TypeAccessories" Relationship="UP41Model.FK_Accessories_TypeAccessories" FromRole="Accessories" ToRole="TypeAccessories" />
+          <NavigationProperty Name="Unit" Relationship="UP41Model.FK_Accessories_Unit" FromRole="Accessories" ToRole="Unit" />
+          <NavigationProperty Name="ProductAccessories" Relationship="UP41Model.FK_ProductAccessories_Accessories" FromRole="Accessories" ToRole="ProductAccessories" />
+        </EntityType>
+        <EntityType Name="AcessoriesImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_Accessories_AcessoriesImage" FromRole="AcessoriesImage" ToRole="Accessories" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Street" Relationship="UP41Model.FK_Street_City" FromRole="City" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IdOrder" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="UP41Model.FK_Document_Order" FromRole="Document" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTypeEquipment" Type="Int32" />
+          <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TypeEquipment" Relationship="UP41Model.FK_Equipment_TypeEquipment" FromRole="Equipment" ToRole="TypeEquipment" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Article" />
+          </Key>
+          <Property Name="Article" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdUnit" Type="Int32" />
+          <Property Name="Count" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdMaterialImage" Type="Int32" />
+          <Property Name="IdTypeMaterial" Type="Int32" />
+          <Property Name="PriceOneKg" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IdStandart" Type="Int32" />
+          <Property Name="WidthMetr" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MassOneMetr" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="IdStorage" Type="Int32" />
+          <NavigationProperty Name="MaterialImage" Relationship="UP41Model.FK_Material_MaterialImage" FromRole="Material" ToRole="MaterialImage" />
+          <NavigationProperty Name="Storage" Relationship="UP41Model.FK_Material_Sklad" FromRole="Material" ToRole="Storage" />
+          <NavigationProperty Name="Standart" Relationship="UP41Model.FK_Material_Standart" FromRole="Material" ToRole="Standart" />
+          <NavigationProperty Name="Supplier" Relationship="UP41Model.FK_Material_Supplier" FromRole="Material" ToRole="Supplier" />
+          <NavigationProperty Name="TypeMaterial" Relationship="UP41Model.FK_Material_TypeMaterial" FromRole="Material" ToRole="TypeMaterial" />
+          <NavigationProperty Name="Unit" Relationship="UP41Model.FK_Material_Unit" FromRole="Material" ToRole="Unit" />
+          <NavigationProperty Name="ProductMaterial" Relationship="UP41Model.FK_ProductMaterial_Material" FromRole="Material" ToRole="ProductMaterial" />
+        </EntityType>
+        <EntityType Name="MaterialImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_MaterialImage" FromRole="MaterialImage" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="OperationSpecification">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="Operation" />
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeEquipment" Type="Int32" />
+          <Property Name="Duration" Type="Time" Precision="7" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_OperationSpecification_Product" FromRole="OperationSpecification" ToRole="Product" />
+          <NavigationProperty Name="TypeEquipment" Relationship="UP41Model.FK_OperationSpecification_TypeEquipment" FromRole="OperationSpecification" ToRole="TypeEquipment" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="LoginCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LoginManager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Document" Relationship="UP41Model.FK_Document_Order" FromRole="Order" ToRole="Document" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_Order_Product" FromRole="Order" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PerformTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_tasks" Relationship="UP41Model.FK_User_tasks_PerformTasks" FromRole="PerformTasks" ToRole="User_tasks" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationSpecification" Relationship="UP41Model.FK_OperationSpecification_Product" FromRole="Product" ToRole="OperationSpecification" />
+          <NavigationProperty Name="Order" Relationship="UP41Model.FK_Order_Product" FromRole="Product" ToRole="Order" />
+          <NavigationProperty Name="ProductAccessories" Relationship="UP41Model.FK_ProductAccessories_Product" FromRole="Product" ToRole="ProductAccessories" />
+          <NavigationProperty Name="ProductDetail" Relationship="UP41Model.FK_ProductDetail_Product" FromRole="Product" ToRole="ProductDetail" />
+          <NavigationProperty Name="ProductDetail1" Relationship="UP41Model.FK_ProductDetail_Product1" FromRole="Product" ToRole="ProductDetail" />
+          <NavigationProperty Name="ProductMaterial" Relationship="UP41Model.FK_ProductMaterial_Product" FromRole="Product" ToRole="ProductMaterial" />
+          <NavigationProperty Name="Size" Relationship="UP41Model.FK_Size_Product" FromRole="Product" ToRole="Size" />
+        </EntityType>
+        <EntityType Name="ProductAccessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="AccessoriesArticle" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_ProductAccessories_Accessories" FromRole="ProductAccessories" ToRole="Accessories" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_ProductAccessories_Product" FromRole="ProductAccessories" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="IdDetail" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="IdDetail" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_ProductDetail_Product" FromRole="ProductDetail" ToRole="Product" />
+          <NavigationProperty Name="Product1" Relationship="UP41Model.FK_ProductDetail_Product1" FromRole="ProductDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="MaterialArticle" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_ProductMaterial_Material" FromRole="ProductMaterial" ToRole="Material" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_ProductMaterial_Product" FromRole="ProductMaterial" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="UP41Model.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SizeValue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IdUnit" Type="Int32" />
+          <Property Name="IdProduct" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_Size_Product" FromRole="Size" ToRole="Product" />
+          <NavigationProperty Name="Unit" Relationship="UP41Model.FK_Size_Unit" FromRole="Size" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Standart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_Standart" FromRole="Standart" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_Accessories_Sklad" FromRole="Storage" ToRole="Accessories" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_Sklad" FromRole="Storage" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_City" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="UP41Model.FK_Street_City" FromRole="Street" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierName" />
+          </Key>
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_Accessories_Supplier1" FromRole="Supplier" ToRole="Accessories" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_Supplier" FromRole="Supplier" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeAccessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_Accessories_TypeAccessories" FromRole="TypeAccessories" ToRole="Accessories" />
+        </EntityType>
+        <EntityType Name="TypeEquipment">
+          <Key>
+            <PropertyRef Name="IdTypeEquipment" />
+          </Key>
+          <Property Name="IdTypeEquipment" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Equipment" Relationship="UP41Model.FK_Equipment_TypeEquipment" FromRole="TypeEquipment" ToRole="Equipment" />
+          <NavigationProperty Name="OperationSpecification" Relationship="UP41Model.FK_OperationSpecification_TypeEquipment" FromRole="TypeEquipment" ToRole="OperationSpecification" />
+        </EntityType>
+        <EntityType Name="TypeMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_TypeMaterial" FromRole="TypeMaterial" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessories" Relationship="UP41Model.FK_Accessories_Unit" FromRole="Unit" ToRole="Accessories" />
+          <NavigationProperty Name="Material" Relationship="UP41Model.FK_Material_Unit" FromRole="Unit" ToRole="Material" />
+          <NavigationProperty Name="Size" Relationship="UP41Model.FK_Size_Unit" FromRole="Unit" ToRole="Size" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdUserImage" Type="Int32" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Id_Street" Type="Int32" />
+          <Property Name="House" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Flat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="UP41Model.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="User_tasks" Relationship="UP41Model.FK_User_tasks_User" FromRole="User" ToRole="User_tasks" />
+        </EntityType>
+        <EntityType Name="User_tasks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="id_perform_task" Type="Int32" />
+          <NavigationProperty Name="PerformTasks" Relationship="UP41Model.FK_User_tasks_PerformTasks" FromRole="User_tasks" ToRole="PerformTasks" />
+          <NavigationProperty Name="User" Relationship="UP41Model.FK_User_tasks_User" FromRole="User_tasks" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Accessories_AcessoriesImage">
+          <End Type="UP41Model.AcessoriesImage" Role="AcessoriesImage" Multiplicity="0..1" />
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcessoriesImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdAcessoriesImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Sklad">
+          <End Type="UP41Model.Storage" Role="Storage" Multiplicity="0..1" />
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Supplier1">
+          <End Type="UP41Model.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierName" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="SupplierName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_TypeAccessories">
+          <End Type="UP41Model.TypeAccessories" Role="TypeAccessories" Multiplicity="0..1" />
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAccessories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdTypeAccessories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessories_Unit">
+          <End Type="UP41Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accessories">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAccessories_Accessories">
+          <End Type="UP41Model.Accessories" Role="Accessories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="UP41Model.ProductAccessories" Role="ProductAccessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="Article" />
+            </Principal>
+            <Dependent Role="ProductAccessories">
+              <PropertyRef Name="AccessoriesArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Street_City">
+          <End Type="UP41Model.City" Role="City" Multiplicity="0..1" />
+          <End Type="UP41Model.Street" Role="Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="Id_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Order">
+          <End Type="UP41Model.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="UP41Model.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_TypeEquipment">
+          <End Type="UP41Model.TypeEquipment" Role="TypeEquipment" Multiplicity="0..1" />
+          <End Type="UP41Model.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEquipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_MaterialImage">
+          <End Type="UP41Model.MaterialImage" Role="MaterialImage" Multiplicity="0..1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialImage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdMaterialImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Sklad">
+          <End Type="UP41Model.Storage" Role="Storage" Multiplicity="0..1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Standart">
+          <End Type="UP41Model.Standart" Role="Standart" Multiplicity="0..1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Standart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdStandart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Supplier">
+          <End Type="UP41Model.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierName" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="SupplierName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_TypeMaterial">
+          <End Type="UP41Model.TypeMaterial" Role="TypeMaterial" Multiplicity="0..1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdTypeMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Unit">
+          <End Type="UP41Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterial_Material">
+          <End Type="UP41Model.Material" Role="Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="UP41Model.ProductMaterial" Role="ProductMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Article" />
+            </Principal>
+            <Dependent Role="ProductMaterial">
+              <PropertyRef Name="MaterialArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationSpecification_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="UP41Model.OperationSpecification" Role="OperationSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OperationSpecification">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationSpecification_TypeEquipment">
+          <End Type="UP41Model.TypeEquipment" Role="TypeEquipment" Multiplicity="0..1" />
+          <End Type="UP41Model.OperationSpecification" Role="OperationSpecification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEquipment">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Principal>
+            <Dependent Role="OperationSpecification">
+              <PropertyRef Name="IdTypeEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="UP41Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_tasks_PerformTasks">
+          <End Type="UP41Model.PerformTasks" Role="PerformTasks" Multiplicity="0..1" />
+          <End Type="UP41Model.User_tasks" Role="User_tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerformTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_tasks">
+              <PropertyRef Name="id_perform_task" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAccessories_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="UP41Model.ProductAccessories" Role="ProductAccessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAccessories">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="UP41Model.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product1">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="UP41Model.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="IdDetail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterial_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="UP41Model.ProductMaterial" Role="ProductMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMaterial">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Size_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="UP41Model.Size" Role="Size" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Size">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="UP41Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="UP41Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Size_Unit">
+          <End Type="UP41Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="UP41Model.Size" Role="Size" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Size">
+              <PropertyRef Name="IdUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_tasks_User">
+          <End Type="UP41Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="UP41Model.User_tasks" Role="User_tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="User_tasks">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UP41ModelContainer" CdmEntityContainer="UP41Entities">
+          <EntitySetMapping Name="Accessories">
+            <EntityTypeMapping TypeName="UP41Model.Accessories">
+              <MappingFragment StoreEntitySet="Accessories">
+                <ScalarProperty Name="IdStorage" ColumnName="IdStorage" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IdTypeAccessories" ColumnName="IdTypeAccessories" />
+                <ScalarProperty Name="IdAcessoriesImage" ColumnName="IdAcessoriesImage" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IdUnit" ColumnName="IdUnit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcessoriesImage">
+            <EntityTypeMapping TypeName="UP41Model.AcessoriesImage">
+              <MappingFragment StoreEntitySet="AcessoriesImage">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="UP41Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document">
+            <EntityTypeMapping TypeName="UP41Model.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="UP41Model.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="IdTypeEquipment" ColumnName="IdTypeEquipment" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="UP41Model.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="IdStorage" ColumnName="IdStorage" />
+                <ScalarProperty Name="MassOneMetr" ColumnName="MassOneMetr" />
+                <ScalarProperty Name="WidthMetr" ColumnName="WidthMetr" />
+                <ScalarProperty Name="IdStandart" ColumnName="IdStandart" />
+                <ScalarProperty Name="PriceOneKg" ColumnName="PriceOneKg" />
+                <ScalarProperty Name="IdTypeMaterial" ColumnName="IdTypeMaterial" />
+                <ScalarProperty Name="IdMaterialImage" ColumnName="IdMaterialImage" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IdUnit" ColumnName="IdUnit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialImage">
+            <EntityTypeMapping TypeName="UP41Model.MaterialImage">
+              <MappingFragment StoreEntitySet="MaterialImage">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationSpecification">
+            <EntityTypeMapping TypeName="UP41Model.OperationSpecification">
+              <MappingFragment StoreEntitySet="OperationSpecification">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="IdTypeEquipment" ColumnName="IdTypeEquipment" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="UP41Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LoginManager" ColumnName="LoginManager" />
+                <ScalarProperty Name="LoginCustomer" ColumnName="LoginCustomer" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerformTasks">
+            <EntityTypeMapping TypeName="UP41Model.PerformTasks">
+              <MappingFragment StoreEntitySet="PerformTasks">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="UP41Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductAccessories">
+            <EntityTypeMapping TypeName="UP41Model.ProductAccessories">
+              <MappingFragment StoreEntitySet="ProductAccessories">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="AccessoriesArticle" ColumnName="AccessoriesArticle" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDetail">
+            <EntityTypeMapping TypeName="UP41Model.ProductDetail">
+              <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IdDetail" ColumnName="IdDetail" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMaterial">
+            <EntityTypeMapping TypeName="UP41Model.ProductMaterial">
+              <MappingFragment StoreEntitySet="ProductMaterial">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="MaterialArticle" ColumnName="MaterialArticle" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="UP41Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Size">
+            <EntityTypeMapping TypeName="UP41Model.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdUnit" ColumnName="IdUnit" />
+                <ScalarProperty Name="SizeValue" ColumnName="SizeValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Standart">
+            <EntityTypeMapping TypeName="UP41Model.Standart">
+              <MappingFragment StoreEntitySet="Standart">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage">
+            <EntityTypeMapping TypeName="UP41Model.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="UP41Model.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="UP41Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UP41Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeAccessories">
+            <EntityTypeMapping TypeName="UP41Model.TypeAccessories">
+              <MappingFragment StoreEntitySet="TypeAccessories">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeEquipment">
+            <EntityTypeMapping TypeName="UP41Model.TypeEquipment">
+              <MappingFragment StoreEntitySet="TypeEquipment">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdTypeEquipment" ColumnName="IdTypeEquipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeMaterial">
+            <EntityTypeMapping TypeName="UP41Model.TypeMaterial">
+              <MappingFragment StoreEntitySet="TypeMaterial">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="UP41Model.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="UP41Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Flat" ColumnName="Flat" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Id_Street" ColumnName="Id_Street" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IdUserImage" ColumnName="IdUserImage" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_tasks">
+            <EntityTypeMapping TypeName="UP41Model.User_tasks">
+              <MappingFragment StoreEntitySet="User_tasks">
+                <ScalarProperty Name="id_perform_task" ColumnName="id_perform_task" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserImage">
+            <EntityTypeMapping TypeName="UP41Model.UserImage">
+              <MappingFragment StoreEntitySet="UserImage">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

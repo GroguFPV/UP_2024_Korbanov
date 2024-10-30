@@ -1,0 +1,78 @@
+﻿<Page x:Class="UP_2024.pages.materials_components_list"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UP_2024.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1300"
+      Title="materials_components_list">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+            <TextBlock   Style="{StaticResource TextStyle}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,20,0,0" FontWeight="Bold">УЧЕТ МАТЕРИАЛОВ И КОМПЛЕКТУЮЩИХ</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock   Style="{StaticResource TextStyle}" HorizontalAlignment="Center">Текущий список</TextBlock>
+                    <ComboBox x:Name="ListSelectCb" Width="300" Margin="10,0,0,0" SelectionChanged="ListSelectCb_SelectionChanged_1" >
+                        <ComboBoxItem Content="Материалы и компоненты"/>
+                        <ComboBoxItem Content="Материалы"/>
+                        <ComboBoxItem Content="Компоненты"/>
+                    </ComboBox>
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30,10,0,0">
+                    <TextBlock   Style="{StaticResource TextStyle}" HorizontalAlignment="Center">Склад</TextBlock>
+                    <ComboBox SelectionChanged="MaterialWarehouseCb_SelectionChanged" x:Name="MaterialWarehouseCb" Height="25"
+                              DisplayMemberPath="Name" Width="200"
+                              
+                              ></ComboBox>
+
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+        <ScrollViewer  Grid.Row="1" Grid.Column="1" Height="600"  Margin="0,3,0,0">
+            <WrapPanel x:Name="mat_comp_wp"></WrapPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="2"  Margin="0,10,10,0" Orientation="Vertical">
+            <Button  Height="40" FontSize="18" Width="100" Background="#FFBB0C07" Style="{StaticResource ButtonStyle}"
+                Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click" 
+                                  >Выход</Button>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+
+
+            <Button x:Name="AddMatBtn"  Height="40" FontSize="18" Width="300" Background="#FF4867AC" Style="{StaticResource ButtonStyle}"
+                Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="0,0,0,5" Click="AddMatBtn_Click_1"  
+                                  >Добавить материал</Button>
+            <Button x:Name="AddAccBtn" Height="40" FontSize="18" Width="300" Background="#FF4867AC" Style="{StaticResource ButtonStyle}"
+                Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20,0,0,5" Click="AddAccBtn_Click_1" 
+                                  >Добавить комплектующие</Button>
+
+                <TextBlock  Style="{StaticResource TextStyle}" x:Name="MaterialCountTb" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">16 из 100</TextBlock>
+            <TextBlock  Style="{StaticResource TextStyle}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">Общая закупочная стоимость:</TextBlock>
+            <TextBlock  Style="{StaticResource TextStyle}" x:Name="MaterialPriceTb" Margin="10 0 0 0" VerticalAlignment="Center">228 руб.</TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</Page>

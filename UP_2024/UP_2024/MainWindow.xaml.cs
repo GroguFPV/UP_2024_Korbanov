@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UP_2024.pages;
 
 namespace UP_2024
 {
@@ -23,6 +24,14 @@ namespace UP_2024
         public MainWindow()
         {
             InitializeComponent();
+            App.mainWindow = this;
+            
+            if (App.currentUser == null) MainFrame.Navigate(new auth_page());
+            else
+            {
+                App.Current.Properties[0] = App.currentUser;
+                MainFrame.Navigate(new nav_page());
+            }
         }
     }
 }

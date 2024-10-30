@@ -5,10 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UP_2024.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1300"
       Title="auth_page">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Border Width="350" Height="250" CornerRadius="20" Background="#FFFEF9DE">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Foreground="#FFBB0C07" Style="{StaticResource TextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20">Авторизация</TextBlock>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 4">
+                        <TextBlock Style="{StaticResource TextStyle}">Логин</TextBlock>
+                        <TextBox Style="{StaticResource TbStyle}" x:Name="LoginTbx" Width="200" Margin="5 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 4">
+                        <TextBlock Style="{StaticResource TextStyle}">Пароль</TextBlock>
+                        <PasswordBox FontSize="18" x:Name="PassTbx" Width="200" Margin="5 0"></PasswordBox>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 4">
+                        <CheckBox x:Name="RemberCheck" VerticalAlignment="Center"></CheckBox>
+                        <TextBlock Style="{StaticResource TextStyle}" Margin="5 0" VerticalAlignment="Center">Запомнить меня</TextBlock>
+                    </StackPanel>
+                    <Button Background="#FFF3CC8D" Style="{StaticResource ButtonStyle}" x:Name="EnterButt" Width="250" Margin="5 0" Click="EnterButt_Click">Войти</Button>
+
+                    <TextBlock FontFamily="Century Gothic" HorizontalAlignment="Center"><Hyperlink Foreground="#FFBB0C07" Click="Hyperlink_Click">Нет аккаунта? Зарегестрироваться!</Hyperlink></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

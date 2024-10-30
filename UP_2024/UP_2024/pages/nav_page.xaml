@@ -1,0 +1,44 @@
+﻿<Page x:Class="UP_2024.pages.nav_page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UP_2024.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1300"
+      Title="nav_page">
+
+    <Grid Background="White">
+        <Border  CornerRadius="10">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <Border x:Name="workers_card" Width="450" Height="650" CornerRadius="20" Background="#FF4867AC">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <Border Width="400" Background="White">
+                            <Image Source="/images/w_icon.png" />
+
+                        </Border>
+                        <Button Background="white" Style="{StaticResource ButtonStyle}"
+                                 Width="400" Height="50" Margin="0,50,0,0" Click="Button_Click">УЧЕТ РАБОТНИКОВ ПРОИЗВОДСТВА</Button>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="d_card"  Width="450" Height="650" CornerRadius="20" Background="#FF4867AC" Margin="40,0,0,0">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <Border Width="400" Height="400" Background="White">
+                            <Image Source="/images/d_icon.png" />
+
+                        </Border>
+                        <Button Background="white" Style="{StaticResource ButtonStyle}"
+                                 Width="400" Height="50" Margin="0,50,0,0" Click="Button_Click_2">УЧЕТ МАТЕРИАЛОВ И КОМПЛЕКТУЮЩИХ</Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Button Height="40" FontSize="18" Width="100" Background="#FFBB0C07" Style="{StaticResource ButtonStyle}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="Button_Click_1"
+                                  >Выход</Button>
+        
+    </Grid>
+</Page>
