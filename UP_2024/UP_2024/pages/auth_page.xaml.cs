@@ -23,6 +23,9 @@ namespace UP_2024.pages
         public auth_page()
         {
             InitializeComponent();
+            App.mainWindow.Title = "Авторизация";
+            App.currentUser = null;
+            App.Current.Properties[0] = null;
         }
         private void EnterButt_Click(object sender, RoutedEventArgs e)
         {

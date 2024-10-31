@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="db\HardwareFailure.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db\OrderStatus.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="db\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -73,21 +79,39 @@
     <Compile Include="pages\add_edit_acc_page.xaml.cs">
       <DependentUpon>add_edit_acc_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\add_edit_equipment_page.xaml.cs">
+      <DependentUpon>add_edit_equipment_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\add_edit_mat_page.xaml.cs">
       <DependentUpon>add_edit_mat_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\add_edit_order_page.xaml.cs">
+      <DependentUpon>add_edit_order_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\add_worker_page.xaml.cs">
       <DependentUpon>add_worker_page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\eq_list_page.xaml.cs">
+      <DependentUpon>eq_list_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\materials_components_list.xaml.cs">
       <DependentUpon>materials_components_list.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\Methods.cs" />
+    <Compile Include="pages\orders_list_page.xaml.cs">
+      <DependentUpon>orders_list_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucs\accessories_uc.xaml.cs">
       <DependentUpon>accessories_uc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ucs\ec_uc.xaml.cs">
+      <DependentUpon>ec_uc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucs\material_uc.xaml.cs">
       <DependentUpon>material_uc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucs\order_uc.xaml.cs">
+      <DependentUpon>order_uc.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucs\worker_uc.xaml.cs">
       <DependentUpon>worker_uc.xaml</DependentUpon>
@@ -201,7 +225,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\add_edit_equipment_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\add_edit_mat_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\add_edit_order_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,11 +245,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\eq_list_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\materials_components_list.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\nav_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\orders_list_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,7 +273,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ucs\ec_uc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ucs\material_uc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucs\order_uc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

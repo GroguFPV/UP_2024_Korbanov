@@ -45,11 +45,22 @@
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
-            <PropertyRef Name="Model" />
+            <PropertyRef Name="id_equipment" />
           </Key>
+          <Property Name="id_equipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdTypeEquipment" Type="int" />
           <Property Name="Characteristic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HardwareFailure">
+          <Key>
+            <PropertyRef Name="Fail_id" />
+          </Key>
+          <Property Name="Fail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Equipment_id" Type="int" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+          <Property Name="DateStart" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -91,14 +102,22 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateOrder" Type="date" Nullable="false" />
+          <Property Name="Order_status_id" Type="int" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="IdProduct" Type="int" />
-          <Property Name="LoginCustomer" Type="nvarchar" MaxLength="100" />
-          <Property Name="LoginManager" Type="nvarchar" MaxLength="100" />
+          <Property Name="id_Customer" Type="int" />
+          <Property Name="id_Manager" Type="int" />
           <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
           <Property Name="DateEnd" Type="date" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="Order_status_id" />
+          </Key>
+          <Property Name="Order_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status_name" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="PerformTasks">
           <Key>
@@ -111,7 +130,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductAccessories">
@@ -209,7 +228,7 @@
           <Key>
             <PropertyRef Name="IdTypeEquipment" />
           </Key>
-          <Property Name="IdTypeEquipment" Type="int" Nullable="false" />
+          <Property Name="IdTypeEquipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TypeMaterial">
@@ -344,6 +363,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HardwareFailure_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="HardwareFailure" Type="Self.HardwareFailure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id_equipment" />
+            </Principal>
+            <Dependent Role="HardwareFailure">
+              <PropertyRef Name="Equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Material_MaterialImage">
           <End Role="MaterialImage" Type="Self.MaterialImage" Multiplicity="0..1" />
           <End Role="Material" Type="Self.Material" Multiplicity="*" />
@@ -440,6 +471,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="Order_status_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Order_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -449,6 +492,30 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="id_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="id_Manager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -606,10 +673,12 @@
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HardwareFailure" EntityType="Self.HardwareFailure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialImage" EntityType="Self.MaterialImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperationSpecification" EntityType="Self.OperationSpecification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PerformTasks" EntityType="Self.PerformTasks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductAccessories" EntityType="Self.ProductAccessories" Schema="dbo" store:Type="Tables" />
@@ -657,6 +726,10 @@
             <End Role="TypeEquipment" EntitySet="TypeEquipment" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
+          <AssociationSet Name="FK_HardwareFailure_Equipment" Association="Self.FK_HardwareFailure_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="HardwareFailure" EntitySet="HardwareFailure" />
+          </AssociationSet>
           <AssociationSet Name="FK_Material_MaterialImage" Association="Self.FK_Material_MaterialImage">
             <End Role="MaterialImage" EntitySet="MaterialImage" />
             <End Role="Material" EntitySet="Material" />
@@ -689,8 +762,20 @@
             <End Role="TypeEquipment" EntitySet="TypeEquipment" />
             <End Role="OperationSpecification" EntitySet="OperationSpecification" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
             <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
+            <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductAccessories_Accessories" Association="Self.FK_ProductAccessories_Accessories">
@@ -756,6 +841,7 @@
           <EntitySet Name="MaterialImage" EntityType="UP41Model.MaterialImage" />
           <EntitySet Name="OperationSpecification" EntityType="UP41Model.OperationSpecification" />
           <EntitySet Name="Order" EntityType="UP41Model.Order" />
+          <EntitySet Name="OrderStatus" EntityType="UP41Model.OrderStatus" />
           <EntitySet Name="PerformTasks" EntityType="UP41Model.PerformTasks" />
           <EntitySet Name="Product" EntityType="UP41Model.Product" />
           <EntitySet Name="ProductAccessories" EntityType="UP41Model.ProductAccessories" />
@@ -847,8 +933,20 @@
             <End Role="TypeEquipment" EntitySet="TypeEquipment" />
             <End Role="OperationSpecification" EntitySet="OperationSpecification" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="UP41Model.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_Product" Association="UP41Model.FK_Order_Product">
             <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="UP41Model.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User1" Association="UP41Model.FK_Order_User1">
+            <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_User_tasks_PerformTasks" Association="UP41Model.FK_User_tasks_PerformTasks">
@@ -886,6 +984,11 @@
           <AssociationSet Name="FK_User_tasks_User" Association="UP41Model.FK_User_tasks_User">
             <End Role="User" EntitySet="User" />
             <End Role="User_tasks" EntitySet="User_tasks" />
+          </AssociationSet>
+          <EntitySet Name="HardwareFailure" EntityType="UP41Model.HardwareFailure" />
+          <AssociationSet Name="FK_HardwareFailure_Equipment" Association="UP41Model.FK_HardwareFailure_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="HardwareFailure" EntitySet="HardwareFailure" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Accessories">
@@ -937,12 +1040,14 @@
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
-            <PropertyRef Name="Model" />
+            <PropertyRef Name="id_equipment" />
           </Key>
+          <Property Name="id_equipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdTypeEquipment" Type="Int32" />
           <Property Name="Characteristic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TypeEquipment" Relationship="UP41Model.FK_Equipment_TypeEquipment" FromRole="Equipment" ToRole="TypeEquipment" />
+          <NavigationProperty Name="HardwareFailure" Relationship="UP41Model.FK_HardwareFailure_Equipment" FromRole="Equipment" ToRole="HardwareFailure" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -994,16 +1099,28 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Order_status_id" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdProduct" Type="Int32" />
-          <Property Name="LoginCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LoginManager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id_Customer" Type="Int32" />
+          <Property Name="id_Manager" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="DateEnd" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Document" Relationship="UP41Model.FK_Document_Order" FromRole="Order" ToRole="Document" />
+          <NavigationProperty Name="OrderStatus" Relationship="UP41Model.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="Product" Relationship="UP41Model.FK_Order_Product" FromRole="Order" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="UP41Model.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="UP41Model.FK_Order_User1" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="Order_status_id" />
+          </Key>
+          <Property Name="Order_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="UP41Model.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
         </EntityType>
         <EntityType Name="PerformTasks">
           <Key>
@@ -1017,7 +1134,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OperationSpecification" Relationship="UP41Model.FK_OperationSpecification_Product" FromRole="Product" ToRole="OperationSpecification" />
           <NavigationProperty Name="Order" Relationship="UP41Model.FK_Order_Product" FromRole="Product" ToRole="Order" />
@@ -1138,7 +1255,7 @@
           <Key>
             <PropertyRef Name="IdTypeEquipment" />
           </Key>
-          <Property Name="IdTypeEquipment" Type="Int32" Nullable="false" />
+          <Property Name="IdTypeEquipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Equipment" Relationship="UP41Model.FK_Equipment_TypeEquipment" FromRole="TypeEquipment" ToRole="Equipment" />
           <NavigationProperty Name="OperationSpecification" Relationship="UP41Model.FK_OperationSpecification_TypeEquipment" FromRole="TypeEquipment" ToRole="OperationSpecification" />
@@ -1179,6 +1296,8 @@
           <Property Name="Flat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="UP41Model.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="UP41Model.FK_Order_User1" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="UP41Model.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="User_tasks" Relationship="UP41Model.FK_User_tasks_User" FromRole="User" ToRole="User_tasks" />
         </EntityType>
@@ -1419,6 +1538,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Type="UP41Model.OrderStatus" Role="OrderStatus" Multiplicity="0..1" />
+          <End Type="UP41Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="Order_status_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Order_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Product">
           <End Type="UP41Model.Product" Role="Product" Multiplicity="0..1" />
           <End Type="UP41Model.Order" Role="Order" Multiplicity="*" />
@@ -1428,6 +1559,30 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="UP41Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="UP41Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="id_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User1">
+          <End Type="UP41Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="UP41Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="id_Manager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1539,7 +1694,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="HardwareFailure">
+          <Key>
+            <PropertyRef Name="Fail_id" />
+          </Key>
+          <Property Name="Fail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Equipment_id" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Equipment" Relationship="UP41Model.FK_HardwareFailure_Equipment" FromRole="HardwareFailure" ToRole="Equipment" />
+        </EntityType>
+        <Association Name="FK_HardwareFailure_Equipment">
+          <End Type="UP41Model.Equipment" Role="Equipment" Multiplicity="0..1" />
+          <End Type="UP41Model.HardwareFailure" Role="HardwareFailure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id_equipment" />
+            </Principal>
+            <Dependent Role="HardwareFailure">
+              <PropertyRef Name="Equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1593,6 +1771,7 @@
                 <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
                 <ScalarProperty Name="IdTypeEquipment" ColumnName="IdTypeEquipment" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="id_equipment" ColumnName="id_equipment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1638,12 +1817,21 @@
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="LoginManager" ColumnName="LoginManager" />
-                <ScalarProperty Name="LoginCustomer" ColumnName="LoginCustomer" />
+                <ScalarProperty Name="id_Manager" ColumnName="id_Manager" />
+                <ScalarProperty Name="id_Customer" ColumnName="id_Customer" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Order_status_id" ColumnName="Order_status_id" />
                 <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="UP41Model.OrderStatus">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="Status_name" ColumnName="Status_name" />
+                <ScalarProperty Name="Order_status_id" ColumnName="Order_status_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1822,6 +2010,17 @@
               <MappingFragment StoreEntitySet="UserImage">
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HardwareFailure">
+            <EntityTypeMapping TypeName="UP41Model.HardwareFailure">
+              <MappingFragment StoreEntitySet="HardwareFailure">
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Equipment_id" ColumnName="Equipment_id" />
+                <ScalarProperty Name="Fail_id" ColumnName="Fail_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

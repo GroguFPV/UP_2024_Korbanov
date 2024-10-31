@@ -34,6 +34,7 @@ namespace UP_2024.db
         public virtual DbSet<MaterialImage> MaterialImage { get; set; }
         public virtual DbSet<OperationSpecification> OperationSpecification { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<PerformTasks> PerformTasks { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductAccessories> ProductAccessories { get; set; }
@@ -53,5 +54,6 @@ namespace UP_2024.db
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<User_tasks> User_tasks { get; set; }
         public virtual DbSet<UserImage> UserImage { get; set; }
+        public virtual DbSet<HardwareFailure> HardwareFailure { get; set; }
     }
 }

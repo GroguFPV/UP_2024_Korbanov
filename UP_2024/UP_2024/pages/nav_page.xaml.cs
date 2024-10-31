@@ -23,9 +23,43 @@ namespace UP_2024.pages
         public nav_page()
         {
             InitializeComponent();
-            int RoleId = (int)App.db.User.Where(x => x.Login == App.currentUser).FirstOrDefault().RoleId;
-            if (RoleId != 3) workers_card.Visibility = Visibility.Collapsed;
-            if (RoleId == 4) d_card.Visibility = Visibility.Collapsed;
+
+
+            int roleId = (int)App.db.User.FirstOrDefault(x => x.Login == App.currentUser)?.RoleId;
+
+            if (roleId != 3) workers_card.Visibility = Visibility.Collapsed;
+            if (roleId == 4) d_card.Visibility = Visibility.Collapsed;
+
+            SetPageTitle(roleId);
+        }
+
+        private void SetPageTitle(int roleId)
+        {
+
+            switch (roleId)
+            {
+                case 1: 
+                    App.mainWindow.Title = "Экран мастера";
+                    break;
+                case 2:
+                    App.mainWindow.Title = "Экран конструктора";
+                    break;
+                case 3:
+                    App.mainWindow.Title = "Экран директора";
+                    break;
+                case 4:
+                    App.mainWindow.Title = "Экран заказчика";
+                    break;
+                case 5:
+                    App.mainWindow.Title = "Экран менеджера";
+                    break;
+                case 6:
+                    App.mainWindow.Title = "Экран рабочего";
+                    break;
+                default:
+                    App.mainWindow.Title = "Главная страница";
+                    break;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,6 +75,11 @@ namespace UP_2024.pages
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new materials_components_list());
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new orders_list_page());
         }
     }
 }

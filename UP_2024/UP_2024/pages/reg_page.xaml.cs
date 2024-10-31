@@ -24,6 +24,7 @@ namespace UP_2024.pages
         public reg_page()
         {
             InitializeComponent();
+            App.mainWindow.Title = "Регистрация";
         }
         private void BackButt_Click(object sender, RoutedEventArgs e)
         {

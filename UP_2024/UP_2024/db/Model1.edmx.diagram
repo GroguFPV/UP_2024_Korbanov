@@ -5,34 +5,35 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="46fd81a27dd54ed8b332f7c5482d972f" Name="Diagram1">
-        <EntityTypeShape EntityType="UP41Model.Accessories" Width="1.5" PointX="0.75" PointY="17.375" />
-        <EntityTypeShape EntityType="UP41Model.AcessoriesImage" Width="1.5" PointX="1.5" PointY="1.375" />
-        <EntityTypeShape EntityType="UP41Model.City" Width="1.5" PointX="8.75" PointY="7" />
-        <EntityTypeShape EntityType="UP41Model.Document" Width="1.5" PointX="5.25" PointY="11.375" />
-        <EntityTypeShape EntityType="UP41Model.Equipment" Width="1.5" PointX="3" PointY="17.75" />
-        <EntityTypeShape EntityType="UP41Model.Material" Width="1.5" PointX="3.75" PointY="36.25" />
-        <EntityTypeShape EntityType="UP41Model.MaterialImage" Width="1.5" PointX="1.5" PointY="35.5" />
-        <EntityTypeShape EntityType="UP41Model.OperationSpecification" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="UP41Model.Order" Width="1.5" PointX="3" PointY="10.875" />
-        <EntityTypeShape EntityType="UP41Model.PerformTasks" Width="1.5" PointX="8" PointY="14.25" />
-        <EntityTypeShape EntityType="UP41Model.Product" Width="1.5" PointX="0.75" PointY="9.25" />
-        <EntityTypeShape EntityType="UP41Model.ProductAccessories" Width="1.5" PointX="3" PointY="4.5" />
-        <EntityTypeShape EntityType="UP41Model.ProductDetail" Width="1.5" PointX="3" PointY="23.5" />
-        <EntityTypeShape EntityType="UP41Model.ProductMaterial" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="UP41Model.Role" Width="1.5" PointX="5.75" PointY="2.25" />
-        <EntityTypeShape EntityType="UP41Model.Size" Width="1.5" PointX="8" PointY="10.375" />
-        <EntityTypeShape EntityType="UP41Model.Standart" Width="1.5" PointX="1.5" PointY="40.125" />
-        <EntityTypeShape EntityType="UP41Model.Storage" Width="1.5" PointX="1.5" PointY="29.875" />
-        <EntityTypeShape EntityType="UP41Model.Street" Width="1.5" PointX="11" PointY="6.875" />
-        <EntityTypeShape EntityType="UP41Model.Supplier" Width="1.5" PointX="1.5" PointY="27.125" />
-        <EntityTypeShape EntityType="UP41Model.sysdiagrams" Width="1.5" PointX="10.75" PointY="9.75" />
-        <EntityTypeShape EntityType="UP41Model.TypeAccessories" Width="1.5" PointX="1.5" PointY="14.75" />
-        <EntityTypeShape EntityType="UP41Model.TypeEquipment" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="UP41Model.TypeMaterial" Width="1.5" PointX="1.5" PointY="37.75" />
-        <EntityTypeShape EntityType="UP41Model.Unit" Width="1.5" PointX="1.5" PointY="32.375" />
-        <EntityTypeShape EntityType="UP41Model.User" Width="1.5" PointX="8" PointY="1" />
-        <EntityTypeShape EntityType="UP41Model.User_tasks" Width="1.5" PointX="10.25" PointY="2.125" />
-        <EntityTypeShape EntityType="UP41Model.UserImage" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UP41Model.Accessories" Width="1.5" PointX="0.75" PointY="40.75" />
+        <EntityTypeShape EntityType="UP41Model.AcessoriesImage" Width="1.5" PointX="1.5" PointY="45.875" />
+        <EntityTypeShape EntityType="UP41Model.City" Width="1.5" PointX="8.75" PointY="3.875" />
+        <EntityTypeShape EntityType="UP41Model.Document" Width="1.5" PointX="8.25" PointY="8.875" />
+        <EntityTypeShape EntityType="UP41Model.Equipment" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="UP41Model.Material" Width="1.5" PointX="0.75" PointY="21.5" />
+        <EntityTypeShape EntityType="UP41Model.MaterialImage" Width="1.5" PointX="1.5" PointY="19" />
+        <EntityTypeShape EntityType="UP41Model.OperationSpecification" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="UP41Model.Order" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="UP41Model.OrderStatus" Width="1.5" PointX="3.75" PointY="6.375" />
+        <EntityTypeShape EntityType="UP41Model.PerformTasks" Width="1.5" PointX="3.75" PointY="19.375" />
+        <EntityTypeShape EntityType="UP41Model.Product" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="UP41Model.ProductAccessories" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="UP41Model.ProductDetail" Width="1.5" PointX="3" PointY="24.875" />
+        <EntityTypeShape EntityType="UP41Model.ProductMaterial" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="UP41Model.Role" Width="1.5" PointX="1.5" PointY="5.375" />
+        <EntityTypeShape EntityType="UP41Model.Size" Width="1.5" PointX="6" PointY="12.625" />
+        <EntityTypeShape EntityType="UP41Model.Standart" Width="1.5" PointX="1.5" PointY="38.375" />
+        <EntityTypeShape EntityType="UP41Model.Storage" Width="1.5" PointX="1.5" PointY="30.375" />
+        <EntityTypeShape EntityType="UP41Model.Street" Width="1.5" PointX="11" PointY="3.75" />
+        <EntityTypeShape EntityType="UP41Model.Supplier" Width="1.5" PointX="1.5" PointY="33" />
+        <EntityTypeShape EntityType="UP41Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="11.5" />
+        <EntityTypeShape EntityType="UP41Model.TypeAccessories" Width="1.5" PointX="1.5" PointY="48.25" />
+        <EntityTypeShape EntityType="UP41Model.TypeEquipment" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="UP41Model.TypeMaterial" Width="1.5" PointX="1.5" PointY="35.625" />
+        <EntityTypeShape EntityType="UP41Model.Unit" Width="1.5" PointX="1.5" PointY="27.625" />
+        <EntityTypeShape EntityType="UP41Model.User" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UP41Model.User_tasks" Width="1.5" PointX="6" PointY="2" />
+        <EntityTypeShape EntityType="UP41Model.UserImage" Width="1.5" PointX="5.75" PointY="5.5" />
         <AssociationConnector Association="UP41Model.FK_Accessories_AcessoriesImage" />
         <AssociationConnector Association="UP41Model.FK_Accessories_Sklad" />
         <AssociationConnector Association="UP41Model.FK_Accessories_Supplier1" />
@@ -51,7 +52,10 @@
         <AssociationConnector Association="UP41Model.FK_ProductMaterial_Material" />
         <AssociationConnector Association="UP41Model.FK_OperationSpecification_Product" />
         <AssociationConnector Association="UP41Model.FK_OperationSpecification_TypeEquipment" />
+        <AssociationConnector Association="UP41Model.FK_Order_OrderStatus" />
         <AssociationConnector Association="UP41Model.FK_Order_Product" />
+        <AssociationConnector Association="UP41Model.FK_Order_User" />
+        <AssociationConnector Association="UP41Model.FK_Order_User1" />
         <AssociationConnector Association="UP41Model.FK_User_tasks_PerformTasks" />
         <AssociationConnector Association="UP41Model.FK_ProductAccessories_Product" />
         <AssociationConnector Association="UP41Model.FK_ProductDetail_Product" />
@@ -61,6 +65,8 @@
         <AssociationConnector Association="UP41Model.FK_User_Role" />
         <AssociationConnector Association="UP41Model.FK_Size_Unit" />
         <AssociationConnector Association="UP41Model.FK_User_tasks_User" />
+        <EntityTypeShape EntityType="UP41Model.HardwareFailure" Width="1.5" PointX="5.25" PointY="21.75" />
+        <AssociationConnector Association="UP41Model.FK_HardwareFailure_Equipment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

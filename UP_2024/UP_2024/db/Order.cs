@@ -22,15 +22,19 @@ namespace UP_2024.db
     
         public int Id { get; set; }
         public System.DateTime DateOrder { get; set; }
+        public Nullable<int> Order_status_id { get; set; }
         public string Name { get; set; }
         public Nullable<int> IdProduct { get; set; }
-        public string LoginCustomer { get; set; }
-        public string LoginManager { get; set; }
+        public Nullable<int> id_Customer { get; set; }
+        public Nullable<int> id_Manager { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<System.DateTime> DateEnd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Document { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
         public virtual Product Product { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

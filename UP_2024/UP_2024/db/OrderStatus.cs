@@ -12,21 +12,18 @@ namespace UP_2024.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class OrderStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipment()
+        public OrderStatus()
         {
-            this.HardwareFailure = new HashSet<HardwareFailure>();
+            this.Order = new HashSet<Order>();
         }
     
-        public int id_equipment { get; set; }
-        public string Model { get; set; }
-        public Nullable<int> IdTypeEquipment { get; set; }
-        public string Characteristic { get; set; }
+        public int Order_status_id { get; set; }
+        public string Status_name { get; set; }
     
-        public virtual TypeEquipment TypeEquipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HardwareFailure> HardwareFailure { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }
