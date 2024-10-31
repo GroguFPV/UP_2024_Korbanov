@@ -24,6 +24,7 @@ namespace UP_2024.db
             this.ProductDetail1 = new HashSet<ProductDetail>();
             this.ProductMaterial = new HashSet<ProductMaterial>();
             this.Size = new HashSet<Size>();
+            this.Test = new HashSet<Test>();
         }
     
         public int Id { get; set; }
@@ -43,5 +44,7 @@ namespace UP_2024.db
         public virtual ICollection<ProductMaterial> ProductMaterial { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Size> Size { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Test> Test { get; set; }
     }
 }

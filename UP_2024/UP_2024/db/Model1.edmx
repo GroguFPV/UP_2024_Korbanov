@@ -217,6 +217,16 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_id" />
+          </Key>
+          <Property Name="Test_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="isPassed" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="product_id" Type="int" />
+        </EntityType>
         <EntityType Name="TypeAccessories">
           <Key>
             <PropertyRef Name="Id" />
@@ -631,6 +641,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Test_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -691,6 +713,7 @@
           <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeAccessories" EntityType="Self.TypeAccessories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeEquipment" EntityType="Self.TypeEquipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeMaterial" EntityType="Self.TypeMaterial" Schema="dbo" store:Type="Tables" />
@@ -813,6 +836,10 @@
           <AssociationSet Name="FK_Street_City" Association="Self.FK_Street_City">
             <End Role="City" EntitySet="City" />
             <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Product" Association="Self.FK_Test_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Test" EntitySet="Test" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -990,6 +1017,11 @@
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="HardwareFailure" EntitySet="HardwareFailure" />
           </AssociationSet>
+          <EntitySet Name="Test" EntityType="UP41Model.Test" />
+          <AssociationSet Name="FK_Test_Product" Association="UP41Model.FK_Test_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Accessories">
           <Key>
@@ -1143,6 +1175,7 @@
           <NavigationProperty Name="ProductDetail1" Relationship="UP41Model.FK_ProductDetail_Product1" FromRole="Product" ToRole="ProductDetail" />
           <NavigationProperty Name="ProductMaterial" Relationship="UP41Model.FK_ProductMaterial_Product" FromRole="Product" ToRole="ProductMaterial" />
           <NavigationProperty Name="Size" Relationship="UP41Model.FK_Size_Product" FromRole="Product" ToRole="Size" />
+          <NavigationProperty Name="Test" Relationship="UP41Model.FK_Test_Product" FromRole="Product" ToRole="Test" />
         </EntityType>
         <EntityType Name="ProductAccessories">
           <Key>
@@ -1717,6 +1750,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_id" />
+          </Key>
+          <Property Name="Test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Test_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="isPassed" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_id" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="UP41Model.FK_Test_Product" FromRole="Test" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Test_Product">
+          <End Type="UP41Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="UP41Model.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2021,6 +2077,17 @@
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Equipment_id" ColumnName="Equipment_id" />
                 <ScalarProperty Name="Fail_id" ColumnName="Fail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="UP41Model.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="isPassed" ColumnName="isPassed" />
+                <ScalarProperty Name="Test_name" ColumnName="Test_name" />
+                <ScalarProperty Name="Test_id" ColumnName="Test_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

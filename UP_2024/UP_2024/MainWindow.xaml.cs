@@ -24,8 +24,8 @@ namespace UP_2024
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new eq_list_page());
-            App.mainWindow = this;
+            MainFrame.Navigate(new tests_page());
+            //App.mainWindow = this;
 
             //if (App.currentUser == null) MainFrame.Navigate(new auth_page());
             //else

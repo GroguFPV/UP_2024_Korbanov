@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="db\Class1.cs" />
     <Compile Include="db\HardwareFailure.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -71,6 +72,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="db\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db\Test.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="db\User_tasks.cs">
@@ -88,6 +92,9 @@
     <Compile Include="pages\add_edit_order_page.xaml.cs">
       <DependentUpon>add_edit_order_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\add_edit_test_page.xaml.cs">
+      <DependentUpon>add_edit_test_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\add_worker_page.xaml.cs">
       <DependentUpon>add_worker_page.xaml</DependentUpon>
     </Compile>
@@ -101,6 +108,9 @@
     <Compile Include="pages\orders_list_page.xaml.cs">
       <DependentUpon>orders_list_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\tests_page.xaml.cs">
+      <DependentUpon>tests_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucs\accessories_uc.xaml.cs">
       <DependentUpon>accessories_uc.xaml</DependentUpon>
     </Compile>
@@ -112,6 +122,9 @@
     </Compile>
     <Compile Include="ucs\order_uc.xaml.cs">
       <DependentUpon>order_uc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucs\test_uc.xaml.cs">
+      <DependentUpon>test_uc.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucs\worker_uc.xaml.cs">
       <DependentUpon>worker_uc.xaml</DependentUpon>
@@ -237,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\add_edit_test_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\add_worker_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -265,6 +282,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\tests_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\workerslist_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -282,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ucs\order_uc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucs\test_uc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

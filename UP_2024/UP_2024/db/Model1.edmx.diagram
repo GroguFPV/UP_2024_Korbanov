@@ -67,6 +67,8 @@
         <AssociationConnector Association="UP41Model.FK_User_tasks_User" />
         <EntityTypeShape EntityType="UP41Model.HardwareFailure" Width="1.5" PointX="5.25" PointY="21.75" />
         <AssociationConnector Association="UP41Model.FK_HardwareFailure_Equipment" />
+        <EntityTypeShape EntityType="UP41Model.Test" Width="1.5" PointX="3" PointY="40.875" />
+        <AssociationConnector Association="UP41Model.FK_Test_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -55,5 +55,6 @@ namespace UP_2024.db
         public virtual DbSet<User_tasks> User_tasks { get; set; }
         public virtual DbSet<UserImage> UserImage { get; set; }
         public virtual DbSet<HardwareFailure> HardwareFailure { get; set; }
+        public virtual DbSet<Test> Test { get; set; }
     }
 }
