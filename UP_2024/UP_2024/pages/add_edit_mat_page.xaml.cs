@@ -145,5 +145,15 @@ namespace UP_2024.pages
             App.db.SaveChanges();
             NavigationService.Navigate(new materials_components_list());
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
+        }
+
+        private void RetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new materials_components_list());
+        }
     }
 }

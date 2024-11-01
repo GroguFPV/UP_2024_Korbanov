@@ -50,7 +50,7 @@ namespace UP_2024.ucs
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Создаем диалоговое окно для подтверждения
+
             MessageBoxResult result = MessageBox.Show(
                 "Вы уверены, что хотите удалить этот материал?",
                 "Подтверждение удаления",

@@ -142,6 +142,16 @@ namespace UP_2024.pages
             NavigationService.Navigate(new materials_components_list());
             MessageBox.Show("Изменения успешно сохранены!");
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
+        }
+
+        private void RetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new materials_components_list());
+        }
     }
 }
 

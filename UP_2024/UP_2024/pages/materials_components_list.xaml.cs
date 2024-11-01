@@ -28,7 +28,6 @@ namespace UP_2024.pages
         {
             mat_comp_wp.Children.Clear();
 
-            // Отображаем материалы независимо от выбранного склада
             Storage selectedWarehouse = MaterialWarehouseCb.SelectedItem as Storage;
             IEnumerable<Material> materials = selectedWarehouse == null
                 ? App.db.Material.ToList()
@@ -51,7 +50,6 @@ namespace UP_2024.pages
         {
             mat_comp_wp.Children.Clear();
 
-            // Отображаем комплектующие независимо от выбранного склада
             Storage selectedWarehouse = MaterialWarehouseCb.SelectedItem as Storage;
             IEnumerable<Accessories> accessories = selectedWarehouse == null
                 ? App.db.Accessories.ToList()
@@ -74,7 +72,6 @@ namespace UP_2024.pages
         {
             mat_comp_wp.Children.Clear();
 
-            // Отображаем все материалы и комплектующие независимо от выбранного склада
             Storage selectedWarehouse = MaterialWarehouseCb.SelectedItem as Storage;
             var materials = selectedWarehouse == null
                 ? App.db.Material.ToList()
@@ -147,6 +144,11 @@ namespace UP_2024.pages
         private void ListSelectCb_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             UpdateContent();
+        }
+
+        private void ReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
         }
     }
 }

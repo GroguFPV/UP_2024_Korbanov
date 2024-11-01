@@ -29,6 +29,7 @@ namespace UP_2024.pages
 
             if (roleId != 3) workers_card.Visibility = Visibility.Collapsed;
             if (roleId == 4) d_card.Visibility = Visibility.Collapsed;
+            if (roleId != 4) eq_list_btn.Visibility = Visibility.Collapsed; test_list_btn.Visibility= Visibility.Collapsed;
 
             SetPageTitle(roleId);
         }
@@ -80,6 +81,21 @@ namespace UP_2024.pages
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new orders_list_page());
+        }
+
+        private void OrderListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new orders_list_page());
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new eq_list_page());
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new tests_page());
         }
     }
 }

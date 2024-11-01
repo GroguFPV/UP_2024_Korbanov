@@ -41,5 +41,10 @@ namespace UP_2024.pages
         {
             NavigationService.Navigate(new auth_page());
         }
+
+        private void ReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new nav_page());
+        }
     }
 }

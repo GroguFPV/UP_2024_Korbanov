@@ -147,5 +147,15 @@ namespace UP_2024.pages
 
             return null;
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
+        }
+
+        private void RetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new eq_list_page());
+        }
     }
 }

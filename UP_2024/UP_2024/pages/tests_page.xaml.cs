@@ -64,6 +64,11 @@ namespace UP_2024.pages
             }
             catch (Exception ex) { Methods.TakeWarning("Невозможео удалить тесты!\n" + ex.Message); }
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
+        }
     }
 
 }

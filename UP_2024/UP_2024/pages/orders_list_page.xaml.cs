@@ -27,8 +27,9 @@ namespace UP_2024.pages
                 roleId = (int)currentUser.RoleId;
                 managerId = currentUser.User_id;
             }
-
-            
+            if (roleId != 5 && roleId != 4) { 
+            AddAccBtn.Visibility = Visibility.Collapsed;
+            }
             Refresh();
 
             
@@ -108,6 +109,16 @@ namespace UP_2024.pages
         private void AddAccBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new add_edit_order_page(new Order()));
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new auth_page());
+        }
+
+        private void ReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new nav_page());
         }
     }
 }

@@ -17,7 +17,6 @@ namespace UP_2024.ucs
 
         private void LoadData()
         {
-            // Установка данных о сбое
             failure_date_tb.Text = hardwareFailure.DateStart?.ToString("dd.MM.yyyy HH:mm") ?? "Неизвестно"; 
             failure_equipment_tb.Text = hardwareFailure.Equipment?.Model ?? "Неизвестно"; 
             failure_reason_tb.Text = hardwareFailure.Reason ?? "Неизвестно"; 

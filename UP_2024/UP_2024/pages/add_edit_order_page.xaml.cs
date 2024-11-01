@@ -112,5 +112,10 @@ namespace UP_2024.pages
                 MessageBox.Show($"Ошибка при сохранении заказа: {ex.Message}");
             }
         }
+
+        private void RetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new orders_list_page());
+        }
     }
 }

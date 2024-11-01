@@ -30,7 +30,17 @@
                     <DatePicker x:Name="DateEndDp" Width="300" />
 
                 </StackPanel>
-                <Button x:Name="SaveBtn" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Width="300" Click="SaveBtn_Click" Background="#FFBB0C07" Foreground="White">Сохранить</Button>
+                <Button x:Name="SaveBtn" 
+                        Style="{StaticResource ButtonStyle}" 
+                        Margin="0 10 0 0" Width="300" 
+                        Click="SaveBtn_Click" Background="#FFBB0C07" 
+                        Foreground="White">Сохранить</Button>
+
+                <Button x:Name="RetBtn" 
+                        Style="{StaticResource ButtonStyle}" 
+                        Margin="0 10 0 0" Width="300" 
+                        Background="#FFBB0C07" 
+                        Foreground="White" Click="RetBtn_Click">Назад</Button>
             </StackPanel>
         </Border>
     </Grid>

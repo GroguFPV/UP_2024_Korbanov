@@ -113,6 +113,11 @@ namespace UP_2024.pages
             foreach (var test in tests)
                 test.test.product_id = product.Id;
         }
+
+        private void RetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new tests_page()); 
+        }
     }
 }
 

@@ -33,6 +33,7 @@ namespace UP_2024.ucs
             {
                 EditBtn.Visibility = Visibility.Collapsed;
                 DelBtn.Visibility = Visibility.Collapsed;
+                OrderEditBtn.Visibility = Visibility.Collapsed;
             }
 
 
