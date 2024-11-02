@@ -28,42 +28,25 @@
                 <TextBlock x:Name="TitleTb" FontSize="24" Style="{StaticResource TextStyle14}" HorizontalAlignment="Center">Добавить компонент</TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                     <StackPanel VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Артикул</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Артикул</TextBlock>
                             <TextBox Width="200" x:Name="ArticleTb" Style="{StaticResource TbStyle}" Text="{Binding Article}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Наименование</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Наименование</TextBlock>
                             <TextBox Width="200" x:Name="NameTb" Style="{StaticResource TbStyle}" Text="{Binding Name}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Ед. измерения</TextBlock>
+                            <TextBlock Style="{StaticResource TextStyle14}">Ед. измерения</TextBlock>
                             <ComboBox Width="200" x:Name="UnitCb"  DisplayMemberPath="Name"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Количество</TextBlock>
+                            <TextBlock Style="{StaticResource TextStyle14}">Количество</TextBlock>
                             <TextBox Width="200" x:Name="CountTb" Style="{StaticResource TbStyle}" Text="{Binding Count}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Поставщик</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Поставщик</TextBlock>
                             <ComboBox Width="200" x:Name="SupplierCb"  DisplayMemberPath="SupplierName"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Тип компонента</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Тип компонента</TextBlock>
                             <ComboBox Width="200" x:Name="AccessoryTypeCb"  DisplayMemberPath="Name"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Цена</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Цена</TextBlock>
                             <TextBox Width="200" x:Name="PriceTb"  Text="{Binding PriceOneKg}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Масса в кг.</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Масса в кг.</TextBlock>
                             <TextBox Width="200" x:Name="MassTb"  Text="{Binding MassOneMetr}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Width="100" Style="{StaticResource TextStyle14}">Склад</TextBlock>
+                            <TextBlock  Style="{StaticResource TextStyle14}">Склад</TextBlock>
                             <ComboBox Width="200" x:Name="SkladCb"  DisplayMemberPath="Name"/>
-                        </StackPanel>
+                       
                     </StackPanel>
 
                     <StackPanel Margin="40,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">

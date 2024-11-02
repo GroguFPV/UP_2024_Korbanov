@@ -26,10 +26,10 @@ namespace UP_2024.pages
 
 
             int roleId = (int)App.db.User.FirstOrDefault(x => x.Login == App.currentUser)?.RoleId;
-
-            if (roleId != 3) workers_card.Visibility = Visibility.Collapsed;
+            if (roleId == 1) eq_list_btn.Visibility = Visibility.Visible;
+                if (roleId != 3) workers_card.Visibility = Visibility.Collapsed; plan_btn.Visibility = Visibility.Visible;
             if (roleId == 4) d_card.Visibility = Visibility.Collapsed;
-            if (roleId != 4) eq_list_btn.Visibility = Visibility.Collapsed; test_list_btn.Visibility= Visibility.Collapsed;
+            //if (roleId != 4) eq_list_btn.Visibility = Visibility.Collapsed; 
 
             SetPageTitle(roleId);
         }
@@ -96,6 +96,11 @@ namespace UP_2024.pages
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new tests_page());
+        }
+
+        private void plan_btn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new plan_page());
         }
     }
 }

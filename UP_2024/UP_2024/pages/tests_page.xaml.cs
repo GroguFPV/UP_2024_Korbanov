@@ -46,24 +46,51 @@ namespace UP_2024.pages
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new add_edit_test_page((sender as Image).DataContext as Product));
+            var product = MyList.SelectedItem as Product;
+            if (product != null)
+            {
+                NavigationService.Navigate(new add_edit_test_page(product));
+            }
+            else
+            {
+                MessageBox.Show("Выберите продукт для редактирования.");
+            }
         }
+
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!Methods.TakeChoice("Вы точно хотите удалить тест продукта?"))
-                    return;
-                List<Test> tests = ((sender as Image).DataContext as Product).Test.ToList();
-                foreach (var test in tests)
-                    App.db.Test.Remove(test);
-                App.db.SaveChanges();
-                Refresh();
-                Methods.TakeInformation("Тест успешно удален!");
+                if (MyList.SelectedItem is Product selectedProduct)
+                {
+                    
+                    var testsToDelete = App.db.Test.Where(t => t.product_id == selectedProduct.Id).ToList();
+
+                    
+                    if (testsToDelete.Any())
+                    {
+                        App.db.Test.RemoveRange(testsToDelete);
+                        App.db.SaveChanges();
+                        Refresh();
+                        Methods.TakeInformation("Тесты успешно удалены!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нет тестов для удаления у выбранного продукта.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите продукт для удаления тестов.");
+                }
             }
-            catch (Exception ex) { Methods.TakeWarning("Невозможео удалить тесты!\n" + ex.Message); }
+            catch (Exception ex)
+            {
+                Methods.TakeWarning("Невозможно удалить тесты!\n" + ex.Message);
+            }
         }
+
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {

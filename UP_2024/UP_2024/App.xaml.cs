@@ -18,6 +18,10 @@ namespace UP_2024
     public partial class App : Application
     {
         public static UP41Entities db = new UP41Entities();
+
+
+
+
         public static string currentUser;
         public static MainWindow mainWindow;
 

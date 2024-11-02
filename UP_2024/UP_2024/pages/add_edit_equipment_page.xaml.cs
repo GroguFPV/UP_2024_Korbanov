@@ -15,19 +15,19 @@ namespace UP_2024.pages
             InitializeComponent();
             hardwareFailure = _hardwareFailure;
 
-            // Загружаем оборудование в комбобокс
+           
             EquipmentCb.ItemsSource = App.db.Equipment.ToList();
-            EquipmentCb.DisplayMemberPath = "Model"; // Определяем, как отображать элементы
+            EquipmentCb.DisplayMemberPath = "Model"; 
 
             if (hardwareFailure.Fail_id != 0)
             {
-                // Получаем оборудование по id
+              
                 var equipment = App.db.Equipment.FirstOrDefault(x => x.id_equipment == hardwareFailure.Equipment_id);
 
-                // Устанавливаем сам объект Equipment
+            
                 EquipmentCb.SelectedItem = equipment;
 
-                LoadEdit(); // Заполняем остальные поля
+                LoadEdit(); 
                 EQTitleTb.Text = "Изменить данные сбоя";
             }
         }
@@ -85,10 +85,8 @@ namespace UP_2024.pages
             {
                 var eq = EquipmentCb.SelectedItem as Equipment;
 
-                // Проверяем, это новая запись или обновление существующей
                 if (hardwareFailure.Fail_id == 0)
                 {
-                    // Создаём новую запись о сбое
                     hardwareFailure = new HardwareFailure
                     {
                         Reason = ReasonTb.Text,
@@ -96,7 +94,6 @@ namespace UP_2024.pages
                         DateStart = CombineDateAndTime(StartDate.SelectedDate, StartTimeTb.Text)
                     };
 
-                    // Если выбрана дата окончания, добавляем её в объект
                     if (EndDate.SelectedDate.HasValue)
                     {
                         hardwareFailure.DateEnd = CombineDateAndTime(EndDate.SelectedDate.Value, EndTimeTb.Text);

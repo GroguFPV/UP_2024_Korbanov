@@ -30,6 +30,8 @@ namespace UP_2024.db
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Document> Document { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
+        public virtual DbSet<HardwareFailure> HardwareFailure { get; set; }
+        public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<Material> Material { get; set; }
         public virtual DbSet<MaterialImage> MaterialImage { get; set; }
         public virtual DbSet<OperationSpecification> OperationSpecification { get; set; }
@@ -47,6 +49,7 @@ namespace UP_2024.db
         public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Test> Test { get; set; }
         public virtual DbSet<TypeAccessories> TypeAccessories { get; set; }
         public virtual DbSet<TypeEquipment> TypeEquipment { get; set; }
         public virtual DbSet<TypeMaterial> TypeMaterial { get; set; }
@@ -54,7 +57,6 @@ namespace UP_2024.db
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<User_tasks> User_tasks { get; set; }
         public virtual DbSet<UserImage> UserImage { get; set; }
-        public virtual DbSet<HardwareFailure> HardwareFailure { get; set; }
-        public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<WorkshopItem> WorkshopItem { get; set; }
     }
 }

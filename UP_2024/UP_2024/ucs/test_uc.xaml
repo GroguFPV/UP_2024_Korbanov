@@ -11,7 +11,7 @@
             <StackPanel Orientation="Horizontal" Margin="0 10 0 5">
                 <Button Background="#FFBB0C07" Style="{Binding ButtonStyle}" x:Name="Trash"  Height="25" Width="25" Margin="10 0 15 0" Foreground="White">🗑️</Button>
                 <TextBlock VerticalAlignment="Center" Margin="10 0 10 0">Наименование критерия</TextBlock>
-                <TextBox x:Name="NameTb" Text="{Binding Name}" Height="25" Width="300" Margin="0 0 10 0"></TextBox>
+                <TextBox x:Name="NameTb" Text="{Binding Test_Name}" Height="25" Width="300" Margin="0 0 10 0"></TextBox>
                 <TextBlock VerticalAlignment="Center" Margin="10 0 5 0">Пройдено?</TextBlock>
                 <CheckBox x:Name="PassedCb" VerticalAlignment="Center" Checked="PassedCb_Checked" Unchecked="PassedCb_Unchecked"></CheckBox>
             </StackPanel>

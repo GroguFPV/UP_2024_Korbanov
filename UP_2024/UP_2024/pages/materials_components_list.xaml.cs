@@ -13,6 +13,15 @@ namespace UP_2024.pages
         public materials_components_list()
         {
             InitializeComponent();
+
+            int roleId = (int)App.db.User.FirstOrDefault(x => x.Login == App.currentUser)?.RoleId;
+
+            if (roleId != 3 && roleId!= 5)
+            {
+                AddAccBtn.Visibility = Visibility.Collapsed;
+                AddMatBtn.Visibility = Visibility.Collapsed;
+            }
+
             LoadWarehouses();
             ListSelectCb.SelectedIndex = 0;
             UpdateContent();
@@ -38,8 +47,8 @@ namespace UP_2024.pages
             {
                 mat_comp_wp.Children.Add(new material_uc(material));
                 decimal priceOneKg = material.PriceOneKg ?? 0;
-                decimal count = material.Count ?? 0;
-                totalPrice += priceOneKg * count;
+                
+                totalPrice += priceOneKg;
             }
 
             MaterialCountTb.Text = $"{materials.Count()} из {App.db.Material.Count()}";
@@ -60,8 +69,8 @@ namespace UP_2024.pages
             {
                 mat_comp_wp.Children.Add(new accessories_uc(accessory));
                 decimal price = accessory.Price ?? 0;
-                decimal count = accessory.Count ?? 0;
-                totalPrice += price * count;
+                
+                totalPrice += price;
             }
 
             MaterialCountTb.Text = $"{accessories.Count()} из {App.db.Accessories.Count()}";
@@ -87,16 +96,16 @@ namespace UP_2024.pages
             {
                 mat_comp_wp.Children.Add(new material_uc(material));
                 decimal priceOneKg = material.PriceOneKg ?? 0;
-                decimal count = material.Count ?? 0;
-                totalPrice += priceOneKg * count;
+                
+                totalPrice += priceOneKg;
             }
 
             foreach (var accessory in accessories)
             {
                 mat_comp_wp.Children.Add(new accessories_uc(accessory));
                 decimal price = accessory.Price ?? 0;
-                decimal count = accessory.Count ?? 0;
-                totalPrice += price * count;
+                
+                totalPrice += price;
             }
 
             MaterialCountTb.Text = $"{materials.Count() + accessories.Count()} из {App.db.Material.Count() + App.db.Accessories.Count()}";

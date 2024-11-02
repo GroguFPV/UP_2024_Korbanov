@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 using UP_2024.db;
 using UP_2024.ucs;
 
 namespace UP_2024.pages
 {
     /// <summary>
-    /// Логика взаимодействия для add_edit_test_page.xaml
+    /// Interaction logic for add_edit_test_page.xaml
     /// </summary>
+    // C#
     public partial class add_edit_test_page : Page
     {
         public Product product;
@@ -33,7 +26,7 @@ namespace UP_2024.pages
 
             Order order = product.Order.FirstOrDefault();
             List<Product> products = new List<Product>();
-            if (order != null && order.Order_status_id > 8)
+            if (order != null && order.Order_status_id >= 8)
                 products = App.db.Product.ToList();
             else
             {
@@ -45,6 +38,7 @@ namespace UP_2024.pages
                 }
             }
             ProductCb.ItemsSource = products;
+            ProductCb.DisplayMemberPath = "Name";
 
             if (product.Test.Count() != 0)
             {
@@ -116,8 +110,8 @@ namespace UP_2024.pages
 
         private void RetBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new tests_page()); 
+            NavigationService.GoBack();
         }
     }
-}
 
+}

@@ -16,7 +16,7 @@
                 <StackPanel Margin="0 0 0 0">
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource TextStyle}"  Width="100">Изделие</TextBlock>
-                        <ComboBox Width="200" x:Name="ProductCb" DisplayMemberPath="Name" SelectionChanged="ProductCb_SelectionChanged"></ComboBox>
+                        <ComboBox Width="200" x:Name="ProductCb"  SelectionChanged="ProductCb_SelectionChanged"></ComboBox>
                     </StackPanel>
                     <StackPanel>
                         <Grid Height="40">

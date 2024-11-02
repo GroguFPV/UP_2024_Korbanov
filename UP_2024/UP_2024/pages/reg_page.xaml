@@ -12,7 +12,7 @@
 
         <Border Width="350" Height="250" CornerRadius="20" Background="#FFFEF9DE">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Foreground="#FFBB0C07" Style="{StaticResource TextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20">Регистрация</TextBlock>
+                <TextBlock  Style="{StaticResource TextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20">Регистрация</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 4">
                     <TextBlock Style="{StaticResource TextStyle}" >Логин</TextBlock>
                     <TextBox Style="{StaticResource TbStyle}" x:Name="LoginTbx" Width="200" Margin="5 0"></TextBox>
